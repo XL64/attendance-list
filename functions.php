@@ -93,7 +93,7 @@ function al_DrawList($id=0, $uid=0) {
 	$list = al_GetList($id);
 	$listneg = al_GetListNegative($id);
 	
-	$draw='<table class="al_table" id="al_table_'.$post->ID.'"><tr><td colspan="3">';
+	$draw='<table class="al_table" id="al_table_'.$id.'"><tr><td colspan="3">';
 	$draw.=$al_lang['listheader'].'</td></tr>';
 	
 	if(count($list)>0 && is_array($list)) {
