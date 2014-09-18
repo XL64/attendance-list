@@ -10,6 +10,14 @@ License: GPLv2 or later
 
 Simple event attendance list. You can add it to any post or page.
 
+** This is a fork from 1.1 release tarball **
+
+Contributors: XL
+github: https://github.com/XL64/attendance-list
+
+- Adds the possibility to register for an other user.
+- Adds the possibility to add al_id to the shortcode to be able to have several list in a page [attendancelist al_id=<any unused ID>]. [attendancelist] will keep old behaviour (i.e. id == postID).
+
 == Description ==
 
 Attendance List is simple plugin to manage multiple events attendance lists, witch you can add one for each post. It also support AJAX requests for subscribing and unsubscribing from lists.
