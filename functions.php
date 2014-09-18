@@ -49,16 +49,16 @@ function al_VoteName($vote) {
 	return "";
 }
 
-function al_AddVote($post, $vote) {
+function al_AddVote($post, $vote, $id) {
 	global $wpdb, $current_user, $table_prefix;
 	
-	if ($current_user->ID > 0 && $post > 0 && $vote > 0) {
+	if ($id > 0 && $post > 0 && $vote > 0) {
 		$list = al_GetList($post, false);
 		//check, if user already on list
-		if (empty($list[$current_user->ID])) {
+		if (empty($list[$id])) {
 			$res=$wpdb->query(sprintf("INSERT INTO `".$table_prefix."attendance_list` (`post`, `user`, `vote`, `date`) VALUES (%d, %d, %d, %d)",
 			intval($post),
-			intval($current_user->ID),
+			intval($id),
 			intval($vote),
 			time()
 			));
@@ -67,7 +67,7 @@ function al_AddVote($post, $vote) {
 			intval($vote),
 			time(),
 			intval($post),
-			intval($current_user->ID)
+			intval($id)
 			));
 		}
 		if($res) return true;
@@ -82,8 +82,9 @@ function al_AddCss(){
 function al_AjaxVote($vars) {
 	global $wpdb, $current_user, $al_lang;
 
-	$res=al_AddVote(intval($vars["al_postid"]), intval($vars["al_vote"]));
-	return al_DrawList(intval($vars["al_postid"]), intval($current_user->ID));
+	$res=al_AddVote(intval($vars["al_postid"]), intval($vars["al_vote"]), intval($vars["al_user_ID"]));
+	//return al_DrawList(intval($vars["al_postid"]), intval($current_user->ID));
+	return al_DrawList(intval($vars["al_postid"]), intval($vars["al_user_ID"]));
 }
 
 function al_DrawList($id=0, $uid=0) {

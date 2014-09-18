@@ -75,7 +75,34 @@ function al_Main() {
 				'<a href="#" id="al_vote1_'.$post->ID.'" title="1" class="al_btn al_btn_'.$post->ID.'">'.$al_lang['vote1'].'</a>&nbsp;' .
 				'<a href="#" id="al_vote2_'.$post->ID.'" title="2" class="al_btn al_btn_'.$post->ID.'">'.$al_lang['vote2'].'</a>&nbsp;' .
 				'<a href="#" id="al_vote3_'.$post->ID.'" title="3" class="al_btn al_btn_'.$post->ID.'">'.$al_lang['vote3'].'</a>&nbsp;&nbsp;&nbsp;' .
-				'<span id="al_state_'.$post->ID.'" class="al_state"></span></td></tr></table>';	
+				'<span id="al_state_'.$post->ID.'" class="al_state"></span></td></tr></table>';
+
+
+		$wp_user_search = $wpdb->get_results("SELECT ID, display_name FROM $wpdb->users ORDER BY user_nicename");	
+		$return .= '<table id="al_head_'.$post->ID.'"><tr><td class="al_head">';
+		/*$return.= '<form name="formulaire">';*/
+		$return.= '<select id="boite1" name="boite1" onChange=""> ';
+		$return.= '<option selected value="-1">Choisissez un nom</option>  ';
+		foreach ( $wp_user_search as $userid ) {
+
+	        	$user_id = (int) $userid->ID;
+        		$user_info = get_userdata($user_id);
+			if ($user_info->user_login != 'arruanais' &&
+			    $user_info->user_login != 'admin'
+			   )
+			{
+				$return .= '<option value="'.$user_id.'">'.$user_info->display_name.'</option> ';
+			}
+		}
+		$return .= '</select>';
+		$return .= '</td>';
+		//$return .= '<td class="al_head"><strong>'.$al_lang['question2'].'</strong> </td>';
+		$return .= '<td class="al_head">' .
+				'<a href="#" id="al_vote1_'.$post->ID.'" title="1" class="al_btn al_btn2_'.$post->ID.'">'.$al_lang['vote1'].'</a>&nbsp;' .
+				'<a href="#" id="al_vote2_'.$post->ID.'" title="2" class="al_btn al_btn2_'.$post->ID.'">'.$al_lang['vote2'].'</a>&nbsp;' .
+				'<a href="#" id="al_vote3_'.$post->ID.'" title="3" class="al_btn al_btn2_'.$post->ID.'">'.$al_lang['vote3'].'</a>&nbsp;&nbsp;&nbsp;' .
+				'<span id="al_state2_'.$post->ID.'" class="al_state"></span></td></tr></table>';
+
 	} else {
 		$return.='<table><tr><td>'.$al_lang['login'].'</td></tr></table>';
 	}
@@ -87,7 +114,7 @@ function al_Main() {
 	  jQuery('.al_btn_".$post->ID."').click(function() {
 	  	jQuery('#al_state_".$post->ID."').html('<img src=\"".get_bloginfo('wpurl') ."/wp-content/plugins/attendance-list/img/ajax-loader.gif\" />');
 	    param=jQuery(this).attr('title');
-	    jQuery.post('".get_bloginfo('wpurl') ."/wp-content/plugins/attendance-list/response.php', { al_vote: param, al_postid:".$post->ID." }, 
+	    jQuery.post('".get_bloginfo('wpurl') ."/wp-content/plugins/attendance-list/response.php', { al_vote: param, al_postid:".$post->ID.", al_user_ID:".$current_user->ID." }, 
 	    function(data){ 
 	      if(data) {
 			jQuery('#al_cont_".$post->ID."').html(data);
@@ -95,6 +122,22 @@ function al_Main() {
 	      }
 	    }, 
 	    'html');
+	    return false;
+	  });
+	
+	   jQuery('.al_btn2_".$post->ID."').click(function() {
+		var e = document.getElementById('boite1');
+		var strUser = e.options[e.selectedIndex].value;
+	  	jQuery('#al_state2_".$post->ID."').html('<img src=\"".get_bloginfo('wpurl') ."/wp-content/plugins/attendance-list/img/ajax-loader.gif\" />');
+	    	param=jQuery(this).attr('title');
+	    	jQuery.post('".get_bloginfo('wpurl') ."/wp-content/plugins/attendance-list/response.php', { al_vote: param, al_postid:".$post->ID.", al_user_ID: strUser }, 
+	    	function(data){ 
+	      		if(data) {
+				jQuery('#al_cont_".$post->ID."').html(data);
+				jQuery('#al_state2_".$post->ID."').html('');
+	      		}
+	    	}, 
+	    	'html');
 	    return false;
 	  });
 	});
