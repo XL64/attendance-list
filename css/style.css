@@ -1,0 +1,12 @@
+.al_table_cont { width: 350px; -moz-border-radius:5px; -webkit-border-radius:5px; border:1px solid #eee; }
+.al_table_cont table { margin:0; padding:0; }
+.al_table_cont table tr td { font: 12px "Lucida Grande", Arial, sans-serif; padding:8px 10px; margin:0; }
+.al_table_cont .al_btn { font: 10px "Lucida Grande", Arial, sans-serif; width:auto; background:#288ab7; border:1px solid #206D92; color:#fff; font-weight:bold; margin-top:15px; cursor:pointer; width:auto; -moz-border-radius:3px; -webkit-border-radius:3px; padding:1px 4px; text-decoration:none; }
+.al_table_cont .al_btn:hover { background:#206D92; }
+.al_table_cont table { width:100%; }
+.al_table_cont tr.featured td { font-weight:bold; }
+.al_table td {  border-top:1px solid #eee; }
+.al_table td.small { width:15px; }
+.al_table_cont tr td.noattends { color:#999; }
+td.al_head { background-color:#eee; color:#222; width:50%; }
+.al_state img { vertical-align:middle; }
