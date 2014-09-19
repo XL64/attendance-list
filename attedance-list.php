@@ -1,5 +1,7 @@
 <?php
-/*  Copyright 2010-2014  2inspired  (email : office@2inspired.eu)
+/*
+    Copyright 2014       XL64       (email : xl64100@gmail.com)
+    Copyright 2010-2014  2inspired  (email : office@2inspired.eu)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -16,12 +18,12 @@
 */
 
 /*
-Plugin Name: Attendance List
-Plugin URI: http://attendance.2inspired.eu/
-Description: Simple event attendance list. You can add it to any post or page.
-Author: 2inspired
-Version: 1.1
-Author URI: http://www.2inspired.eu/
+Plugin Name: Attendance List (forked by XL)
+Plugin URI: https://github.com/XL64/attendance-list
+Description: Simple event attendance list. You can add it to any post or page. (Forked from 2inspired 1.1 release http://attendance.2inspired.eu/).
+Author: XL
+Version: 1.2
+Author URI: https://github.com/XL64/
 License: GPLv2
 */
 

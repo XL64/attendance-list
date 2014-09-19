@@ -1,24 +1,26 @@
 === Attendance List ===
 
+Contributors: XL
+github: https://github.com/XL64/attendance-list
 Contributors: pukas
 Donate link: http://attendance.2inspired.eu/
 Tags: events, posts, list, subscribe, ajax
 Requires at least: 2.1
-Tested up to: 3.8.1
-Stable tag: 1.1
+Tested up to: 4.0.0
+Stable tag: 1.2
 License: GPLv2 or later
 
 Simple event attendance list. You can add it to any post or page.
 
-** This is a fork from 1.1 release tarball **
 
-Contributors: XL
-github: https://github.com/XL64/attendance-list
+== Description ==
+
+** This is a fork from 1.1 release tarball **
 
 - Adds the possibility to register for an other user.
 - Adds the possibility to add al_id to the shortcode to be able to have several list in a page [attendancelist al_id=<any unused ID>]. [attendancelist] will keep old behaviour (i.e. id == postID).
 
-== Description ==
+*********************************************
 
 Attendance List is simple plugin to manage multiple events attendance lists, witch you can add one for each post. It also support AJAX requests for subscribing and unsubscribing from lists.
 
